@@ -1,5 +1,10 @@
 <ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
+  <ion-tab [root]="tab1Root" tabTitle="카풀조회" tabIcon="home"></ion-tab>
+ 
+  <ion-tab [root]="tab3Root" tabTitle="카풀모집" tabIcon="contacts"></ion-tab>
+ 
+  <ion-tab [root]="tab3Root" tabTitle="마이페이지" tabIcon="contact"></ion-tab>
+  <ion-fab class="special-fab-bottom"  center bottom (click)="go_register_page()">
+      <button ion-fab mini color="white"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-tabs>
