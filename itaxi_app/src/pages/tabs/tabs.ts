@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
-
+import { NavController, NavParams, Platform } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { MyPage } from '../my-page/my-page';
+import { MakeRoom } from '../make-room/make-room';
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = MyPage;
-  tab3Root = MyPage;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) { }
+  home = HomePage;
+  makeRoom = MakeRoom;
+  myPage = MyPage;
 
-  constructor() {
-
+   go_register_page(){
+  this.navCtrl.push(MakeRoom);
   }
+
 }
