@@ -14,3 +14,37 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.md {
+.special-fab {
+    &.-bottom {
+        bottom: 3px;
+    }
+}
+}
+
+.ios {
+.special-fab {
+    &.-bottom {
+        bottom: 0.1px;
+    }
+}
+}
+
+.font_black{
+    color:black;
+}
+
+.content_center{
+    text-align: center;
+}
+.content_left{
+    text-align: left;
+}
+.content_right{
+    text-align: right;
+}
+
+.list_margin{
+    margin-top:10px;
+    margin-bottom:10px;
+}
