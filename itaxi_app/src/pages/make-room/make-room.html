@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-navbar>
     <ion-title>makeRoom</ion-title>
@@ -50,8 +51,25 @@
     <ion-label fixed>Username</ion-label>
     <ion-input type="text" value=""></ion-input>
   </ion-item>
-    
+
+  <ion-item>
+<ion-label>시간(년-월-일-시-분)</ion-label>    
+ <ion-datetime displayFormat="YYYY-DD-MM" min="2017" max="2020" [(ngModel)]="today"></ion-datetime>
+</ion-item>
+
+  <ion-item>
+<ion-label>시간(년-월-일-시-분)</ion-label>    
+ <ion-datetime displayFormat="HH:mm" [(ngModel)]="today2"></ion-datetime>
+</ion-item>
+
+<div ng-app="demoApp" ng-controller="demoController">
+    <input ng-model="mydatetime" mobiscroll-datetime="settings">
+</div>
     </ion-list>
+
+
+
+
 
     <ion-list *ngSwitchCase="'car'">
       <ion-item>
