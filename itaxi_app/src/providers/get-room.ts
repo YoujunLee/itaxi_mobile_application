@@ -11,7 +11,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class GetRoom {
 
-  constructor(public http: Http) {
-    console.log('Hello GetRoom Provider');
-  }
+  constructor(public http: Http) {}
+
+  getJsonData(){
+  return this.http.get('/api/itaxi_room.php').map(res => res.json());
+}
+
 }
