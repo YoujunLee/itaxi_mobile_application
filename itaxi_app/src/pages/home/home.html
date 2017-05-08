@@ -3,15 +3,11 @@
           <ion-searchbar  showCancelButton placeholder="어디로 가시나요?" ></ion-searchbar>
   </ion-navbar>    
   <ion-list>
-  <ion-item>
-    <h2>한동대학교 → 포항역</h2>
-    <p>2017.04.16</p>
-    <button ion-button clear item-right>View</button>
-  </ion-item>
-  <ion-item>
-    <h2>한동대학교 → 포항역</h2>
+  <ion-item *ngFor="let post of posts">
+    <h2> {{post.start}}  →  {{post.arrive}}</h2>
     <p>2017.04.16</p>
     <button ion-button clear item-right>View</button>
   </ion-item>
   </ion-list>
+
 </ion-content>
