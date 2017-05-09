@@ -7,6 +7,10 @@
     {
       "path": "/api/itaxi_room.php",
       "proxyUrl": "http://itaxi.handong.edu/api/itaxi_room.php"
+    },
+     {
+      "path": "/api/make_room.php",
+      "proxyUrl": "http://itaxi.handong.edu/api/make_room.php"
     }
   ] 
 }

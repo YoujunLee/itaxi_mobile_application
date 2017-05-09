@@ -17,13 +17,13 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <div [ngSwitch]="type">
    <ion-list *ngSwitchCase="'taxi'">
     
     <ion-item>
       <ion-label>출발지</ion-label>
-      <ion-select interface="popover" [(ngModel)]="departure">
+      <ion-select interface="popover" [(ngModel)]="start">
         <ion-option value="한동대학교">한동대학교</ion-option>
         <ion-option value="포항역">포항역 (EDIYA 앞)</ion-option>
         <ion-option value="양덕">양덕</ion-option>
@@ -47,25 +47,22 @@
       </ion-select>
     </ion-item>
 
-     <ion-item>
-    <ion-label fixed>Username</ion-label>
-    <ion-input type="text" value=""></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label>날짜</ion-label>    
+      <ion-datetime displayFormat="YYYY-DD-MM" min="2017" max="2020" [(ngModel)]="date"></ion-datetime>
+    </ion-item>
 
-  <ion-item>
-<ion-label>시간(년-월-일-시-분)</ion-label>    
- <ion-datetime displayFormat="YYYY-DD-MM" min="2017" max="2020" [(ngModel)]="today"></ion-datetime>
-</ion-item>
-
-  <ion-item>
-<ion-label>시간(년-월-일-시-분)</ion-label>    
- <ion-datetime displayFormat="HH:mm" [(ngModel)]="today2"></ion-datetime>
-</ion-item>
-
-<div ng-app="demoApp" ng-controller="demoController">
-    <input ng-model="mydatetime" mobiscroll-datetime="settings">
-</div>
-    </ion-list>
+    <ion-item>
+      <ion-label>시간</ion-label>    
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="time"></ion-datetime>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label fixed>탑승인원</ion-label>
+      <ion-input type="number" value="" [(ngModel)]="population"></ion-input>
+    </ion-item>
+    <button ion-button (click)="submit()">Button</button>
+  </ion-list>
 
 
 
