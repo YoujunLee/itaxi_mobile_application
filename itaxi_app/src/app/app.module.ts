@@ -5,21 +5,22 @@ import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { MyPage } from '../pages/my-page/my-page';
+import { MakeRoom } from '../pages/make-room/make-room';
+import { InnerRoom } from '../pages/inner-room/inner-room';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { MyPage } from '../pages/my-page/my-page';
-import { MakeRoom } from '../pages/make-room/make-room';
 
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
 import { HttpModule }    from '@angular/http';
 import 'rxjs/add/operator/map'
 
 @NgModule({
-  declarations: [MyApp, HomePage, TabsPage, MyPage, MakeRoom, DatePicker],
+  declarations: [MyApp, HomePage, TabsPage, MyPage, MakeRoom, InnerRoom, DatePicker],
   imports: [ BrowserModule, IonicModule.forRoot(MyApp), HttpModule],
   bootstrap: [IonicApp],
-  entryComponents: [ MyApp, HomePage, TabsPage, MyPage, MakeRoom, DatePicker],
+  entryComponents: [ MyApp, HomePage, TabsPage, MyPage, MakeRoom, InnerRoom, DatePicker],
   providers: [ StatusBar, SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

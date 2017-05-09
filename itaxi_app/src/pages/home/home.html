@@ -4,9 +4,9 @@
   </ion-navbar>    
   <ion-list>
   <ion-item *ngFor="let item of items">
-    <h2> {{item.start}}  →  {{item.arrive}}</h2>
+    <h2 > {{item.start}}  →  {{item.arrive}}</h2>
     <p>{{item.date}} {{item.time}}</p>
-    <button ion-button clear item-right>View</button>
+    <button ion-button clear item-right  (click)="post_id=item.post_id" (click)="room()">{{item.population}}</button>
   </ion-item>
   </ion-list> 
 </ion-content>

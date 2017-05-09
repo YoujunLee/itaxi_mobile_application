@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { InnerRoom } from '../inner-room/inner-room';
 /**
  * Generated class for the MyPage page.
  *
@@ -21,4 +21,8 @@ export class MyPage {
     console.log('ionViewDidLoad MyPage');
   }
 
+  go_register_page(){
+  this.navCtrl.push(InnerRoom);
+  }
+  
 }
