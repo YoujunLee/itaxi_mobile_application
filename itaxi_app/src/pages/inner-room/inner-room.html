@@ -5,18 +5,16 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>inner-room</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content class="card-background-page" >
 
-
 <ion-card>
+
   <ion-card>
     <img src="assets/img/taxi.png"/>
     <div class="card-title1">{{start}}</div>
@@ -25,34 +23,13 @@
     <div class="card-subtitle">{{date}} {{time}}</div>
   </ion-card>
 
-  <ion-item>
-    <ion-icon name="call" ios="ios-call-outline" md="ios-call-outline" item-right large></ion-icon>
+  <ion-item *ngFor="let a of fakeArray; let index = index">
+   <ion-icon name="call" ios="ios-call-outline" md="ios-call-outline" item-right large></ion-icon>
     <ion-icon name="mail" ios="ios-mail-outline" md="ios-mail-outline" item-right large></ion-icon>
-    <h2>21101002</h2>
-    <p>010-4408-4262</p>
+    <h2>{{items[index+1].name}}</h2>
+    <p>{{items[index+1].cellphone}}</p>
   </ion-item>
   
-  <ion-item>
-    <ion-icon name="call"  ios="ios-call-outline" md="ios-call-outline"  item-right large></ion-icon>
-    <ion-icon name="mail" ios="ios-mail-outline" md="ios-mail-outline" item-right large></ion-icon>
-    <h2>23425423</h2>
-    <p>010-4408-432</p>
-  </ion-item>
-
-  <ion-item>
-    <ion-icon name="call" ios="ios-call-outline" md="ios-call-outline"  item-right large></ion-icon>
-    <ion-icon name="mail" ios="ios-mail-outline" md="ios-mail-outline" item-right large></ion-icon>
-    <h2>21321002</h2>
-    <p>010-4438-4262</p>
-  </ion-item>
-
-  <ion-item>
-    <ion-icon name="call" ios="ios-call-outline" md="ios-call-outline"  item-right large></ion-icon>
-    <ion-icon name="mail" ios="ios-mail-outline" md="ios-mail-outline" item-right large></ion-icon>
-    <h2>21101004</h2>
-    <p>010-4408-4262</p>
-  </ion-item>
-
   <ion-item>
     <ion-note item-left>* 맨 위 사람이 택시를 불러주세요</ion-note>
     <button ion-button color="danger" icon-left clear item-right>
@@ -60,15 +37,15 @@
       나가기
     </button>
   </ion-item>
-
 </ion-card>
-<ion-footer >
-  <ion-toolbar >
-    <ion-row >
 
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
         <ion-textarea autosize type="text" [(ngModel)]="inputMessage" rows="1" placeholder="댓글을 입력하세요"></ion-textarea>
          <button  *ngIf="inputMessage !=''" ion-button small (click)="send()"> 전송 </button>
     </ion-row>
   </ion-toolbar>
 </ion-footer>
+
 </ion-content>

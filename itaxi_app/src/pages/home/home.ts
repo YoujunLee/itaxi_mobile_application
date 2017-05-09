@@ -13,7 +13,7 @@ import { InnerRoom } from '../inner-room/inner-room';
 export class HomePage {
  items: any;
  loading: any;
- post_id: any=123;
+ post_id: any;
  stu_id= 21101002;
  name =  "이유준";
  cellphone	= "010-4408-4262";

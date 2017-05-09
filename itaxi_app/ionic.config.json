@@ -14,7 +14,7 @@
     },
       {
       "path": "/api/get_room_info.php",
-      "proxyUrl": "http://itaxi.handong.edu/api/get_room_info.php"
+      "proxyUrl": "http://itaxi.handong.edu/api/get_room_info.php?10804"
     }
   ] 
 }

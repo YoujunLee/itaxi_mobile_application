@@ -14,7 +14,7 @@ export class GetRoom {
   constructor(public http: Http) {}
 
   getJsonData(){
-  return this.http.get('/api/itaxi_room.php').map(res => res.json());
+  return this.http.get('http://itaxi.handong.edu/api/itaxi_room.php').map(res => res.json());
 }
 
 }
