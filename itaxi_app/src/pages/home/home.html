@@ -10,10 +10,12 @@
   </ion-navbar>    
   <ion-list>
   <ion-item *ngFor="let item of items let index = index">
-    <h2 > {{item.start}}  →  {{item.arrive}}</h2>
+    <h3 > {{item.start}}  →  {{item.arrive}}</h3>
     <p>{{item.date}} {{item.time}}</p>
-    <button ion-button item-right  (click)="post_id=item.post_id" (click)="start=item.start" (click)="arrive=item.arrive"
-    (click)="date=item.date" (click)="time=item.time" (click)="participate()">{{post_counts[index]}}/{{item.population}}</button>
+    <button medium class="btn-pad-end"  item-right color="danger" *ngIf="post_counts[index]==item.population">모집완료</button>
+  
+    <button class="btn-pad" item-right *ngIf="post_counts[index]<item.population" (click)="post_id=item.post_id" (click)="start=item.start" (click)="arrive=item.arrive"
+    (click)="date=item.date" (click)="time=item.time" (click)="participate()">참여하기<br>{{post_counts[index]}}/{{item.population}}</button>
   </ion-item>
   </ion-list> 
 </ion-content>
