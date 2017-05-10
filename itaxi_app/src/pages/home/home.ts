@@ -11,20 +11,26 @@ import { InnerRoom } from '../inner-room/inner-room';
   providers: [GetRoom]
 })
 export class HomePage {
+ post_id: any;
+ start: string;
+ arrive: string;
+ date: string;
+ time: string;
+ 
  items: any;
  items_count: any;
- post_id: any;
  post_arrs: any;
  post_counts: any;
  i:number;
 
- stu_id= 21101002;
- name =  "이유준";
- cellphone	= "010-4408-4262";
+ stu_id= 21101003;
+ name =  "이선문";
+ cellphone	= "010-4308-4262";
  
  constructor(public navCtrl: NavController, public http : Http, public loadingCtrl:LoadingController, public httpProvider:GetRoom) {
     this.getdata(); 
   }
+ 
   getdata(){
   this.httpProvider.getJsonData().subscribe(
     result => {
@@ -62,9 +68,33 @@ export class HomePage {
                 () => {
                 }
               );
-        /*--------------------------*/
   }
+  
+  participate(){
+    confirm("탑승하시겠습니까? *출발 10분전 취소 불가");
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
 
+    let body = {
+      post_id: this.post_id,
+      stu_id: this.stu_id,
+      name: this.name,
+      cellphone: this.cellphone,
+      start: this.start,
+      arrive: this.arrive,
+      date: this.date,
+      time: this.time
+    };
+
+    let data=JSON.stringify(body);
+    console.log(body);
+    this.http.post('http://itaxi.handong.edu/api/participate.php', data,headers)
+    .map(res=>res.json())
+      .subscribe(res=>{
+        console.log(JSON.stringify(body));
+        console.log(res);
+      });
+  }
 
   room(){
     this.navCtrl.push(InnerRoom,{post_id:this.post_id});
