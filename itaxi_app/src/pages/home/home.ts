@@ -28,9 +28,9 @@ export class HomePage {
  cellphone	= "010-4308-4262";
  
  constructor(public navCtrl: NavController, public http : Http, public loadingCtrl:LoadingController, public httpProvider:GetRoom) {
-    this.getdata(); 
+  
   }
- 
+ ionViewWillEnter() {this.getdata();}
   getdata(){
   this.httpProvider.getJsonData().subscribe(
     result => {
