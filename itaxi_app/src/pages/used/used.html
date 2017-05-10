@@ -1,7 +1,6 @@
 <!-- todo 
 1. 화면 로딩시 정보 리로드 (o)
 2. 화면 로딩 아이콘
-3. 참가햇을시 방내부에서 출력이 되지 않음. 
 -->
 
 <ion-content>
@@ -13,7 +12,7 @@
     <h2 > {{item.start}}  →  {{item.arrive}}</h2>
     <p>{{item.date}} {{item.time}}</p>
     <button ion-button item-right  (click)="post_id=item.post_id" (click)="start=item.start" (click)="arrive=item.arrive"
-    (click)="date=item.date" (click)="time=item.time" (click)="participate()">{{post_counts[index]}}/{{item.population}}</button>
+    (click)="date=item.date" (click)="time=item.time" (click)="participate()">{{item.population}}</button>
   </ion-item>
   </ion-list> 
 </ion-content>

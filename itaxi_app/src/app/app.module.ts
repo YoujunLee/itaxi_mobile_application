@@ -15,12 +15,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
 import { HttpModule }    from '@angular/http';
 import 'rxjs/add/operator/map'
+import { Used } from '../pages/used/used';
 
 @NgModule({
-  declarations: [MyApp, HomePage, TabsPage, MyPage, MakeRoom, InnerRoom, DatePicker],
+  declarations: [MyApp, HomePage, TabsPage, MyPage, MakeRoom, InnerRoom, Used, DatePicker],
   imports: [ BrowserModule, IonicModule.forRoot(MyApp), HttpModule],
   bootstrap: [IonicApp],
-  entryComponents: [ MyApp, HomePage, TabsPage, MyPage, MakeRoom, InnerRoom, DatePicker],
+  entryComponents: [ MyApp, HomePage, TabsPage, MyPage, MakeRoom, InnerRoom, Used,  DatePicker],
   providers: [ StatusBar, SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

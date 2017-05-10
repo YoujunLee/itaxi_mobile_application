@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http} from '@angular/http';
 
 @IonicPage()
@@ -21,7 +21,7 @@ export class InnerRoom {
   name =  "이선문";
   cellphone	= "010-4408-4262";
  
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public http:Http) {
     this.post_id=navParams.get("post_id")
     console.log(this.post_id);
     
@@ -33,10 +33,7 @@ export class InnerRoom {
           this.date=result[0].date;
           this.time=result[0].time;
     
-          this.items=result;  //방 내부 인원 정보 가져오기
-          this.fakeArray = new Array(result.length-1);
-          console.log(result.length);
-          console.log(this.items[0].start);
+          this.printPPl(result);
         },
         err =>{
           console.error("Error : "+err);
@@ -51,24 +48,49 @@ export class InnerRoom {
     console.log('ionViewDidLoad InnerRoom');
   }
   
+  printPPl(result){
+        this.items=result;  //방 내부 인원 정보 가져오기
+        this.fakeArray = new Array(result.length-1);
+        console.log(result.length);
+        console.log(this.items[0].start);
+  }
+
   /* 방 나가기 */
   delete(){
-    confirm("방을 나가시겠습니까?");
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    let body = {
-      post_id: this.post_id,
-      stu_id: this.stu_id,
-    };
-
-    let data=JSON.stringify(body);
-    console.log(body);
-    this.http.post('http://itaxi.handong.edu/api/delete_participate.php', data,headers)
-      .subscribe(res=>{
-        console.log(JSON.stringify(body));
-        console.log(res);
+    let confirm = this.alertCtrl.create({
+      title: '방을 나가시겠습니까?',
+      message: '',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+        
+            let body = {
+              post_id: this.post_id,
+              stu_id: this.stu_id,
+            };
+        
+            let data=JSON.stringify(body);
+            console.log(body);
+            this.http.post('http://itaxi.handong.edu/api/delete_participate.php', data,headers)
+              .subscribe(res=>{
+                console.log(JSON.stringify(body));
+                console.log(res);
+            });
+              this.navCtrl.popTo( this.navCtrl.getByIndex(1));
+            console.log('Agree clicked');
+          }
+        }
+      ]
     });
-    this.navCtrl.popTo( this.navCtrl.getByIndex(1));
+    confirm.present();
   }
 }

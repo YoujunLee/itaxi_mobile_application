@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController  } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map'
 import { GetRoom } from '../../providers/get-room';
@@ -27,7 +27,7 @@ export class HomePage {
  name =  "이선문";
  cellphone	= "010-4308-4262";
  
- constructor(public navCtrl: NavController, public http : Http, public loadingCtrl:LoadingController, public httpProvider:GetRoom) {
+ constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http : Http, public loadingCtrl:LoadingController, public httpProvider:GetRoom) {
   
   }
  ionViewWillEnter() {this.getdata();}
@@ -71,32 +71,47 @@ export class HomePage {
   }
   
   participate(){
-    confirm("탑승하시겠습니까? *출발 10분전 취소 불가");
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    let body = {
-      post_id: this.post_id,
-      stu_id: this.stu_id,
-      name: this.name,
-      cellphone: this.cellphone,
-      start: this.start,
-      arrive: this.arrive,
-      date: this.date,
-      time: this.time
-    };
-
-    let data=JSON.stringify(body);
-    console.log(body);
-    this.http.post('http://itaxi.handong.edu/api/participate.php', data,headers)
-    .map(res=>res.json())
-      .subscribe(res=>{
-        console.log(JSON.stringify(body));
-        console.log(res);
-      });
-  }
-
-  room(){
-    this.navCtrl.push(InnerRoom,{post_id:this.post_id});
-  }
+      let confirm = this.alertCtrl.create({
+      title: '방에 참여하시겠습니까?',
+      message: '**출발 10분전 취소 불가능',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+             let headers = new Headers();
+              headers.append('Content-Type', 'application/json');
+          
+              let body = {
+                post_id: this.post_id,
+                stu_id: this.stu_id,
+                name: this.name,
+                cellphone: this.cellphone,
+                start: this.start,
+                arrive: this.arrive,
+                date: this.date,
+                time: this.time
+              };
+          
+              let data=JSON.stringify(body);
+              console.log(body);
+              this.http.post('http://itaxi.handong.edu/api/participate.php', data,headers)
+              .map(res=>res.json())
+                .subscribe(res=>{
+                  console.log(JSON.stringify(body));
+                  console.log(res);
+                });
+            this.navCtrl.push(InnerRoom,{post_id:this.post_id});
+            console.log('Agree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+   }
 }
