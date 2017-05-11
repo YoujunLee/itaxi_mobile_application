@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController  } from 'ionic-angular';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map'
 import { GetRoom } from '../../providers/get-room';
 import { InnerRoom } from '../inner-room/inner-room';
@@ -18,9 +18,13 @@ export class HomePage {
  time: string;
  
  items: any;
+ persons: any;
  items_count: any;
+
  post_arrs: any;
  post_counts: any;
+ post_check: any;
+ 
  i:number;
 
  stu_id= 21101003;
@@ -37,13 +41,15 @@ export class HomePage {
       this.items=result;
       this.post_arrs=Array(result.length);
       this.post_counts=Array(result.length);
+      this.post_check=Array(result.length);
 
       for(this.i=0; this.i<result.length; this.i++){
         this.post_arrs[this.i]=this.items[this.i].post_id;
-        this.getUser(this.i);
+        this.getUser(this.i, this.items.stu_id);
       }
       console.log(this.post_arrs);
       console.log(this.post_counts);
+      
     },
     err =>{
       console.error("Error : "+err);
@@ -53,14 +59,33 @@ export class HomePage {
     }
   );
 }
+  check_me(){
+     let headers = new Headers();
+              headers.append('Content-Type', 'application/json');
+          
+              let body = {
+                post_id: this.post_id,
+                stu_id: this.stu_id,
+              };
+          
+              let data=JSON.stringify(body);
+              console.log(body);
+              this.http.post('http://itaxi.handong.edu/api/used.php', data,headers)
+                .subscribe(res=>{
+                  //console.log(JSON.stringify(body));
+                  console.log(res);
   
-  getUser(j){
+              });
+
+            
+  }
+  
+  getUser(j, i){
      /*참가자 숫자 출력 시작*/
              this.http.get('http://itaxi.handong.edu/api/get_room_info.php'+'?'+this.post_arrs[j]).map(res => res.json()).subscribe(
                 result => {
                    this.items_count=result;
                    this.post_counts[j]=this.items_count[1].count;
-                  //console.log(this.items_count[1].count);
                 },
                 err =>{
                   console.error("Error : "+err);
@@ -106,6 +131,7 @@ export class HomePage {
                   console.log(JSON.stringify(body));
                   console.log(res);
                 });
+            this.check_me();
             this.navCtrl.push(InnerRoom,{post_id:this.post_id});
             console.log('Agree clicked');
           }

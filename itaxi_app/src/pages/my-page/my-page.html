@@ -10,7 +10,7 @@
   </ion-grid>
     
   <ion-list>
-    <ion-item (click)="go_register_page()">
+    <ion-item (click)="open_page(used)">
     <br>
      <ion-icon name="albums" item-left></ion-icon>
      <h1 class="font_black">탑승내역</h1>
@@ -28,16 +28,10 @@
      <h1 class="font_black">콜택시 번호</h1>
     <br>
     </ion-item>
-    <ion-item (click)="openPage(helper)">
+    <ion-item (click)="open_page(madeIn)">
     <br>
-     <ion-icon name="chatbubbles" item-left></ion-icon>
-     <h1 class="font_black">카카오톡 초대</h1>
-    <br>
-    </ion-item>
-    <ion-item (click)="openPage(feedback)">
-    <br>
-     <ion-icon name="mail" item-left></ion-icon>
-     <h1 class="font_black">피드백 남기기</h1>
+     <ion-icon name="hammer"  item-left></ion-icon>
+     <h1 class="font_black">만든이</h1>
     <br>
     </ion-item>
   </ion-list>

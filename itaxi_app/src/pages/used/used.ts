@@ -28,13 +28,7 @@ export class Used {
     /*방 정보 가져오기 출발 시간 등*/
     this.http.get('http://itaxi.handong.edu/api/used.php'+'?'+this.stu_id).map(res => res.json()).subscribe(
         result => {
-             this.items=result;
-          /*
-          this.start=result[0].start;
-          this.arrive=result[0].arrive;
-          this.date=result[0].date;
-          this.time=result[0].time;
-          */
+          this.items=result;
           console.log(this.items);
         },
         err =>{
